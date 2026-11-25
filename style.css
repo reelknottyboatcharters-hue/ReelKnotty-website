@@ -141,3 +141,56 @@ footer p { margin: 0.25rem 0; }
   .hero-text h1 { font-size: 1.5rem; }
   .logo img { height: 52px; }
 }
+
+/* Call/Text fallback card (see script.js) */
+.rk-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 37, 64, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000;
+}
+.rk-modal-overlay[hidden] { display: none; }
+.rk-modal {
+  position: relative;
+  background: #fff;
+  color: var(--ink);
+  border-radius: 12px;
+  border-top: 6px solid var(--yellow);
+  max-width: 420px;
+  width: 100%;
+  padding: 1.5rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  font-family: Arial, Helvetica, sans-serif;
+}
+.rk-modal h2 { margin: 0 0 0.5rem; color: var(--navy); font-family: Georgia, "Times New Roman", serif; }
+.rk-modal-sub { margin: 0 0 0.5rem; }
+.rk-modal-close {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.6rem;
+  background: none;
+  border: none;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+.rk-copy-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  margin: 0.75rem 0;
+}
+.rk-copy-value { font-weight: bold; word-break: break-word; }
+.rk-copy-btn { flex-shrink: 0; padding: 0.45rem 0.8rem; font-size: 0.9rem; }
+.rk-open-link { display: block; text-align: center; margin-top: 1rem; }
+.rk-modal-note { color: var(--muted); font-size: 0.9rem; margin: 1rem 0 0; }

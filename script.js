@@ -179,6 +179,24 @@
     parts.closeBtn.focus();
   }
 
+  /* The static sms: links use the Android form (?body=). iOS requires
+   * &body= instead, so rewrite the separator at load time on iOS.
+   * The "?&body=" form used previously is malformed and fails to hand
+   * off in Chrome — it must not come back. */
+  function rewriteSmsSeparators() {
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (!isIOS) return;
+    var links = document.querySelectorAll('a[href^="sms:"]');
+    for (var i = 0; i < links.length; i++) {
+      var href = links[i].getAttribute('href');
+      if (href && href.indexOf('?body=') !== -1) {
+        links[i].setAttribute('href', href.replace('?body=', '&body='));
+      }
+    }
+  }
+  rewriteSmsSeparators();
+
   document.addEventListener('click', function (ev) {
     var link = ev.target && ev.target.closest
       ? ev.target.closest('a[href^="tel:"], a[href^="sms:"]')

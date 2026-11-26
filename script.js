@@ -453,3 +453,42 @@
   renderCalendar();
   loadTaken();
 })();
+
+/* Tap-to-copy buttons: any element with a data-copy attribute copies
+ * that value to the clipboard (with a textarea fallback), and briefly
+ * shows "Copied!". Used by the Zelle number on the booking page. */
+(function () {
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) { /* ignore */ }
+    document.body.removeChild(ta);
+  }
+  var btns = document.querySelectorAll('[data-copy]');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function () {
+      var text = this.getAttribute('data-copy');
+      var btn = this;
+      function done() {
+        var orig = btn.getAttribute('data-label') || btn.textContent;
+        btn.setAttribute('data-label', orig);
+        btn.textContent = 'Copied!';
+        setTimeout(function () { btn.textContent = orig; }, 1800);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () {
+          fallbackCopy(text);
+          done();
+        });
+      } else {
+        fallbackCopy(text);
+        done();
+      }
+    });
+  }
+})();

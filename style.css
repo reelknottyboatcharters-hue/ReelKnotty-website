@@ -127,6 +127,10 @@ h3 { color: var(--navy); margin: 0 0 0.5rem; }
 /* Portrait shot whose people sit high in the frame: shift the crop window
    down from center so heads stay in frame at any cell width. */
 .gallery img.show-top { object-position: 50% 15%; }
+/* Tall portrait where the head sits high AND the catch fills the frame:
+   15% would cut the fish in half, so this one uses 40% — heads in
+   frame, tuna whole ("A big catch aboard"). */
+.gallery img.show-top-40 { object-position: 50% 40%; }
 .gallery figcaption { padding: 0.5rem 0.25rem; color: var(--muted); font-size: 0.95rem; }
 
 footer {

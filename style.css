@@ -214,6 +214,10 @@ a.btn.disabled { opacity: 0.55; cursor: not-allowed; }
 .booking-cta { margin-top: 1.5rem; }
 .payment { max-width: 560px; margin: 2rem 0; }
 .payment .cta-row { margin: 1rem 0; }
+.zelle-qr { text-align: center; margin: 1rem 0; }
+.zelle-qr img { width: 220px; height: 220px; background: #fff; padding: 8px; border: 1px solid var(--line); border-radius: 8px; }
+.zelle-qr p { margin: 0.5rem 0; }
+.zelle-qr .rk-copy-row { text-align: left; }
 .hint { color: var(--muted); font-size: 0.95rem; }
 
 /* Availability calendar (booking.html) */
